@@ -1,0 +1,3 @@
+Server/node_modules/*
+/ESP8266/*.mpy
+/ESP8266/.lastbuild

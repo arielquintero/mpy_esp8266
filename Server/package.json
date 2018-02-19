@@ -1,0 +1,20 @@
+{
+  "name": "mpy_esp8266",
+  "version": "1.0.0",
+  "description": "ESP8266 using Micropython with dht11",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "samuel siburian",
+  "license": "ISC",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/samuelbles07/mpy_esp8266.git"
+} ,
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "lowdb": "^1.0.0"
+  }
+}

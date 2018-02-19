@@ -1,6 +1,6 @@
 PORT = /dev/tty.wchusbserial141110
 AMPY = ampy -p $(PORT)
-MPYCROSS = ~/Project/esp_env/upython/micropython/mpy-cross/mpy-cross
+MPYCROSS = mpy-cross
 
 SRC = \
 	cSensor.py \

@@ -1,17 +1,18 @@
 import network
 from umqtt.simple import MQTTClient
 try:
-    import usocket as socket
-except:
-    import socket
+    import urequests as requests
+except ImportError:
+    import requests
 
 ## HTTP REQUEST
-HOST = "google.com"
+HOST = "URL"
 PATH = ""
-## MQTT REQUIRED
+PORT = 3000
+## MQTT REQUIREDD
 CLIENT_ID = "saksang"
 BROKER = "test.mosquitto.org"
-SUBSCRIBE = "/mdn/mydht11"
+SUBSCRIBE = "" #subscribe path
 
 class Networks():
     def __init__(self):
@@ -35,17 +36,15 @@ class Networks():
         c.publish(subs, msg)
         c.disconnect()
 
-    def parse_data(self):
+    def parse_data(self, raw_data):
         import ujson
-        data = ujson.loads(self.raw_data)
-        return data['setup_time']
+        print(raw_data)
+        return ujson.loads(raw_data)
 
     def req_setup(self):
         print("* Requesting setup data..")
-        s = socket.socket()
-        addr = socket.getaddrinfo(HOST, 80)[0][-1]
-        s.connect(addr)
-        s.send(bytes('GET /%s HTTP/1.0\r\n\r\n' % (PATH), 'utf8'))
-        self.raw_data = str(s.recv(1024))
-        s.close()
-        return self.parse_data()
+        r = requests.get("http://%s:%s/%s" % (HOST, PORT, PATH))
+        import ujson
+        data = ujson.loads(r.json())    #still has to be parsed again
+        r.close()
+        return data['setup_time']

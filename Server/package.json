@@ -4,6 +4,7 @@
   "description": "ESP8266 using Micropython with dht11",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "node app.js"
   },
   "author": "samuel siburian",

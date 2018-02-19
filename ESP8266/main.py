@@ -18,4 +18,5 @@ if __name__ == '__main__':
     print("values: ", values)
     net.send_data(values)
     setup_time = net.req_setup()
+    print(setup_time)
     sleep_time(setup_time)
